@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="ui" uiW="720" isH5W="700" />
+    <meta name="description" content="Play Free Games Online, Win Real Cash, Be a Big Winner！" />
+
+    <meta name="keywords" content="Play Free Games Online, Win Real Cash, Be a Big Winner！" />
+    <title>Play Free Games Online, Win Real Cash, Be a Big Winner！</title>
+    <style>
+      #loading-spinner {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        /* background-color: #333; */
+        background: linear-gradient(90deg, rgba(142, 86, 214, 1) 0%, rgba(159, 149, 253, 1) 100%);
+        margin: 100px auto;
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes sk-rotateplane {
+        0% {
+          -webkit-transform: perspective(120px)
+        }
+
+        50% {
+          -webkit-transform: perspective(120px) rotateY(180deg)
+        }
+
+        100% {
+          -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+        }
+      }
+
+      @keyframes sk-rotateplane {
+        0% {
+          transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+        }
+
+        50% {
+          transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+        }
+
+        100% {
+          transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+          -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      !function (d, e) { var c = d.documentElement, t = "orientationchange" in window ? "orientationchange" : "resize", n = document.getElementsByTagName("meta").ui, m = n.getAttribute("isH5W"), r = n.getAttribute("uiW"), i = function () { var e = c.clientWidth, i = document.body.style, o = d.querySelector("html").style; i.width = r / 100 + "rem", e && (o.fontSize = (m < e ? m : e) / r * 100 + "px") }; d.addEventListener && (e.addEventListener(t, i, !1), d.addEventListener("DOMContentLoaded", i, !1), i()) }(document, window);
+    </script>
+    <div id="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+    <div id="app" style="display:none"></div>
+  </body>
+  <script>
+    function notifyAppsFlyerData(json) {
+      console.log('notifyAppsFlyerData', '================')
+      console.log(JSON.parse(json), 'json======')
+      localStorage.setItem('notifyAppsFlyerData', json)
+    }
+    window.onbeforeunload = onbeforeunload_handler;
+    window.onunload = onunload_handler;
+    function onbeforeunload_handler() {
+      localStorage.getItem('req') && localStorage.removeItem('req')
+    }
+    function onunload_handler() {
+      localStorage.getItem('req') && localStorage.removeItem('req')
+    }
+  </script>
+
+</html>

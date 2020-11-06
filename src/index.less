@@ -1,0 +1,95 @@
+html,
+body {
+  width: 100% !important;
+  // height:100%;
+  overflow-x: hidden;
+  background-color: #fff !important;
+  font-family: Arial;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+
+  // touch-action: pan-y;
+  ::-webkit-scrollbar {
+    display: none
+  }
+}
+
+#root {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  // padding-top: .6rem;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 .1rem;
+}
+
+//a {
+//  color: #61dafb;
+//}
+
+//ios机默认存在长按复制选择，用以下代码取消：
+
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+  //pointer-events: none;
+  -o-user-select: none;
+}
+
+//但是以上代码也会禁止输入框的使用，可用以下代码解决：
+
+input {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  border: 0;
+  outline: none;
+  border-radius: 0;
+}
+
+textarea {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

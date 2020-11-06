@@ -1,0 +1,131 @@
+.mailBox {
+  min-height: 100vh;
+  padding-top: 0.96rem;
+  background: #f7f7f7;
+
+  :global .am-pull-to-refresh {
+    height: calc(100vh - 0.96rem);
+
+    .am-pull-to-refresh-content-wrapper {
+      min-height: calc(100vh - 0.96rem);
+    }
+  }
+
+  .mailList {
+
+    .empty {
+      height: calc(100vh - 0.96rem * 2 - 1.57rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        display: block;
+        width: 1.6rem;
+      }
+
+      p {
+        margin-top: 0.23rem;
+        font-size: 0.24rem;
+        font-family: Arial;
+        font-weight: 400;
+        color: #CCCCCC;
+        line-height: 0.3rem;
+      }
+    }
+
+    .listItem {
+      // height: 1.2rem;
+      background: #FFFFFF;
+      margin-top: 0.1rem;
+      // padding: 0 ;
+
+      :global .am-accordion-header {
+        display: flex;
+        align-items: center;
+        height: auto;
+        padding: 0.34rem 0.36rem;
+        box-shadow: 0.05rem 0.3rem 0.4rem 0px rgba(64, 20, 117, 0.06);
+
+        i {
+          width: 0;
+        }
+
+        &::after {
+          background-color: transparent !important;
+        }
+      }
+
+      .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          align-items: center;
+
+          img {
+            display: block;
+            width: 0.52rem;
+          }
+
+          p {
+            margin-left: 0.09rem;
+            font-size: 0.3rem;
+            font-family: Arial;
+            font-weight: 400;
+            color: #000000;
+            line-height: 0.36rem;
+          }
+        }
+
+        span {
+          font-size: 0.26rem;
+          font-family: Arial;
+          font-weight: 400;
+          color: #666666;
+          line-height: 0.36rem;
+        }
+      }
+
+      .mail {
+        padding: 0.3rem 0.36rem;
+
+        .title {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            font-size: 0.28rem;
+            font-family: Arial;
+            font-weight: 400;
+            color: #804EBC;
+            line-height: 0.36rem;
+          }
+
+          span {
+            font-size: 0.24rem;
+            font-family: Arial;
+            font-weight: 400;
+            color: #666666;
+            line-height: 0.36rem;
+          }
+        }
+
+        .content {
+          width: auto;
+          margin-top: 0.26rem;
+          padding: 0 0.1rem;
+          font-size: 0.24rem;
+          font-family: Arial;
+          font-weight: 400;
+          color: #000000;
+          line-height: 0.36rem;
+        }
+      }
+    }
+  }
+}
