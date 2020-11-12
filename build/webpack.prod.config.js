@@ -1,7 +1,7 @@
 const { merge: webpackMerge } = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.config")
 const utils = require("./utils")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+// const HtmlWebpackPlugin = require("html-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -11,21 +11,6 @@ const APP_API = process.env.APP_API || 'PRO';
 module.exports = webpackMerge(baseWebpackConfig, {
   mode: "production",
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: utils.resolve('./../dist/index.html'),
-      template: 'index.html',
-      inject: true,
-      favicon: './favicon.ico',
-      hash: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        minimize: true,
-        minifyCSS: true,
-        minifyJS: true,
-      }
-    }),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env.APP_API': JSON.stringify(APP_API)
@@ -78,7 +63,16 @@ module.exports = webpackMerge(baseWebpackConfig, {
         cache: true,
         parallel: true,
         sourceMap: false,
-        extractComments: 'all'
+        extractComments: false,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+          compress: { // 正式环境 不打印console
+            warnings: false,
+            drop_console: true
+          },
+        }
       }),
       new OptimizeCSSAssetsPlugin({
         assetNameRegExp: /\.css$/g,

@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (window.Android) window.Android.jsTrackEvent('app_opened')
     document.getElementById('app').style.display = 'block'
     document.getElementById('loading-spinner').style.display = 'none'
     let req = location.hash.slice(1).split('?')[0] || '/';
