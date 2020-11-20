@@ -7,6 +7,10 @@ const argv = require('yargs')
   .describe('debug', 'debug environment ') // use 'webpack --debug'
   .argv;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+
 module.exports = {
   entry: {
     app: "./src/index",
@@ -19,6 +23,11 @@ module.exports = {
     publicPath: "./"
   },
   plugins: [
+    new HappyPack({
+      id: 'happy-babel-js',
+      loaders: ['babel-loader?cacheDirectory=true'],
+      threadPool: happyThreadPool
+    }),
     new vConsolePlugin({
       // enable: true
       enable: !!argv.debug
@@ -63,8 +72,10 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        // loader: 'babel-loader',
+        loader: 'happypack/loader?id=happy-babel-js',
+        // include: [utils.resolve('src')],
         exclude: /node_modules/,
-        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -125,7 +136,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10,
           // publicPath: 'imgs/',
           outputPath: 'imgs/',
           esModule: false

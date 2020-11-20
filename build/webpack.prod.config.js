@@ -26,20 +26,12 @@ module.exports = webpackMerge(baseWebpackConfig, {
       maxInitialRequests: 3,
       name: true,
       cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          minChunks: 1,
-          priority: -10
-        },
-        default: {
-          test: /[\\/]src[\\/]js[\\/]/,
+        commons: {
+          chunks: 'initial',
           minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        },
-        antdui: {
-          priority: 2,
-          test: /[\\/]node_modules[\\/](antd)[\\/]/,  //(module) => (/antd/.test(module.context)),
+          maxInitialRequests: 5, // The default limit is too small to showcase the effect
+          minSize: 0, // This is example is too small to create commons chunks
+          name: 'common'
         },
         basic: {
           priority: 3,
@@ -51,11 +43,6 @@ module.exports = webpackMerge(baseWebpackConfig, {
           chunks: 'all',
           enforce: true
         },
-        lib1: {
-          chunks: "initial",
-          name: "antd-mobile",
-          enforce: true
-        }
       }
     },
     minimizer: [
@@ -67,10 +54,13 @@ module.exports = webpackMerge(baseWebpackConfig, {
         terserOptions: {
           output: {
             comments: false,
+            beautify: false,
           },
           compress: { // 正式环境 不打印console
             warnings: false,
-            drop_console: true
+            drop_console: true,
+            collapse_vars: true,
+            reduce_vars: true
           },
         }
       }),
